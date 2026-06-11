@@ -1,0 +1,22 @@
+<h1>Product List</h1>
+
+@if (isLoading()) {
+  <p>Loading products...</p>
+}
+
+@if (errorMessage()) {
+  <p>{{ errorMessage() }}</p>
+}
+
+@if (!isLoading() && !errorMessage()) {
+  <div>
+    @for (product of products(); track product.id) {
+      <div>
+        <h2>{{ product.title }}</h2>
+        <p>{{ product.description }}</p>
+        <p>Category: {{ product.category }}</p>
+        <hr>
+      </div>
+    }
+  </div>
+}
