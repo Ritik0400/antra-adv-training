@@ -1,0 +1,55 @@
+.job-board {
+  max-width: 760px;
+  margin: 30px auto;
+  padding: 24px;
+  background-color: #f5eee9;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #e85d04;
+  margin-top: 0;
+}
+
+.job-card {
+  background-color: white;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.job-card h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.job-card a {
+  color: black;
+  text-decoration: none;
+}
+
+.job-card a:hover {
+  text-decoration: underline;
+}
+
+.job-card p {
+  margin: 0;
+}
+
+button {
+  background-color: #e85d04;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.error-message {
+  color: red;
+}
