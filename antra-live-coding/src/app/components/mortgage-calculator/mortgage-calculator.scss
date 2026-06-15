@@ -1,0 +1,35 @@
+.mortgage-calculator {
+  margin: 40px 0 40px 120px;
+  font-family: Arial, sans-serif;
+}
+
+.mortgage-calculator div {
+  margin-bottom: 8px;
+}
+
+label {
+  font-weight: bold;
+  display: inline-block;
+  width: 145px;
+}
+
+input {
+  width: 220px;
+}
+
+button {
+  margin-top: 4px;
+}
+
+.results {
+  margin-top: 36px;
+}
+
+.results p {
+  margin: 8px 0;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}

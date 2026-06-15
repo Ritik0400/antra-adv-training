@@ -8,41 +8,44 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './mortgage-calculator.scss'
 })
 export class MortgageCalculator {
-  loanAmount = new FormControl('');
-  interestRate = new FormControl('');
-  loanTerm = new FormControl('');
+  loanAmount = new FormControl<number | null>(null);
+  loanTerm = new FormControl<number | null>(null);
+  interestRate = new FormControl<number | null>(null);
 
-  monthlyPayment = signal<number | null>(null);
-  totalPayment = signal<number | null>(null);
-  totalInterest = signal<number | null>(null);
+  monthlyPayment = signal<string>('');
+  totalPayment = signal<string>('');
+  totalInterest = signal<string>('');
   errorMessage = signal<string>('');
 
   calculateMortgage(): void {
     const principal = Number(this.loanAmount.value);
-    const annualInterestRate = Number(this.interestRate.value);
-    const loanTermYears = Number(this.loanTerm.value);
+    const years = Number(this.loanTerm.value);
+    const annualRate = Number(this.interestRate.value);
 
     this.errorMessage.set('');
-    this.monthlyPayment.set(null);
-    this.totalPayment.set(null);
-    this.totalInterest.set(null);
+    this.monthlyPayment.set('');
+    this.totalPayment.set('');
+    this.totalInterest.set('');
 
     if (
+      this.loanAmount.value === null ||
+      this.loanTerm.value === null ||
+      this.interestRate.value === null ||
       isNaN(principal) ||
-      isNaN(annualInterestRate) ||
-      isNaN(loanTermYears)
+      isNaN(years) ||
+      isNaN(annualRate)
     ) {
-      this.errorMessage.set('Please enter numerical values only.');
+      this.errorMessage.set('Please enter numerical values in all fields.');
       return;
     }
 
-    if (principal <= 0 || annualInterestRate < 0 || loanTermYears <= 0) {
-      this.errorMessage.set('Please enter valid positive values.');
+    if (principal <= 0 || years <= 0 || annualRate < 0) {
+      this.errorMessage.set('Please enter valid values.');
       return;
     }
 
-    const numberOfPayments = loanTermYears * 12;
-    const monthlyInterestRate = annualInterestRate / 100 / 12;
+    const monthlyInterestRate = annualRate / 100 / 12;
+    const numberOfPayments = years * 12;
 
     let monthlyPaymentAmount: number;
 
@@ -58,12 +61,8 @@ export class MortgageCalculator {
     const totalPaymentAmount = monthlyPaymentAmount * numberOfPayments;
     const totalInterestAmount = totalPaymentAmount - principal;
 
-    this.monthlyPayment.set(this.roundToTwo(monthlyPaymentAmount));
-    this.totalPayment.set(this.roundToTwo(totalPaymentAmount));
-    this.totalInterest.set(this.roundToTwo(totalInterestAmount));
-  }
-
-  roundToTwo(amount: number): number {
-    return Math.round(amount * 100) / 100;
+    this.monthlyPayment.set(monthlyPaymentAmount.toFixed(2));
+    this.totalPayment.set(totalPaymentAmount.toFixed(2));
+    this.totalInterest.set(totalInterestAmount.toFixed(2));
   }
 }
