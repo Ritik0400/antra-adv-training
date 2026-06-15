@@ -1,0 +1,64 @@
+<div class="mortgage-calculator">
+  <h1>Mortgage Calculator</h1>
+
+  <div class="form-group">
+    <label for="loanAmount">Loan Amount ($):</label>
+    <input
+      id="loanAmount"
+      type="text"
+      placeholder="Example: 100000"
+      [formControl]="loanAmount"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="interestRate">Annual Interest Rate (%):</label>
+    <input
+      id="interestRate"
+      type="text"
+      placeholder="Example: 3"
+      [formControl]="interestRate"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="loanTerm">Loan Term (years):</label>
+    <input
+      id="loanTerm"
+      type="text"
+      placeholder="Example: 30"
+      [formControl]="loanTerm"
+    />
+  </div>
+
+  <button type="button" (click)="calculateMortgage()">
+    Calculate
+  </button>
+
+  @if (errorMessage()) {
+    <p class="error-message">{{ errorMessage() }}</p>
+  }
+
+  <div class="results">
+    <p>
+      <strong>Monthly Payment Amount:</strong>
+      @if (monthlyPayment() !== null) {
+        <span>{{ '$' + monthlyPayment()?.toFixed(2) }}</span>
+      }
+    </p>
+
+    <p>
+      <strong>Total Payment Amount:</strong>
+      @if (totalPayment() !== null) {
+        <span>{{ '$' + totalPayment()?.toFixed(2) }}</span>
+      }
+    </p>
+
+    <p>
+      <strong>Total Interest Paid:</strong>
+      @if (totalInterest() !== null) {
+        <span>{{ '$' + totalInterest()?.toFixed(2) }}</span>
+      }
+    </p>
+  </div>
+</div>
