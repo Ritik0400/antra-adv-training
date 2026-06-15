@@ -1,0 +1,53 @@
+.star-war-search {
+  max-width: 760px;
+  margin: 40px auto;
+  padding: 24px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+th,
+td {
+  border: 1px solid #cccccc;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #eeeeee;
+}
+
+.status-message {
+  color: #555555;
+}
+
+.error-message {
+  color: red;
+}

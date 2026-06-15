@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { JobBoard } from './components/job-board/job-board';
+import { StarWarSearch } from './components/star-war-search/star-war-search';
 
 @Component({
   selector: 'app-root',
-  imports: [JobBoard],
+  imports: [JobBoard, StarWarSearch],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

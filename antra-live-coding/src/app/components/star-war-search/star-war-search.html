@@ -1,0 +1,45 @@
+<div class="star-war-search">
+  <h1>Star Wars Film Search</h1>
+
+  <form>
+    <input
+      type="text"
+      placeholder="Enter character name, e.g. Luke Skywalker"
+      [formControl]="characterName"
+    />
+
+    <button type="button" (click)="onSubmit()">
+      Submit
+    </button>
+  </form>
+
+  @if (isLoading()) {
+    <p class="status-message">Loading films...</p>
+  }
+
+  @if (errorMessage()) {
+    <p class="error-message">{{ errorMessage() }}</p>
+  }
+
+  @if (films().length > 0) {
+    <h2>Films featuring {{ searchedCharacter() }}</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Film Name</th>
+          <th>Year</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (film of films(); track film.title) {
+          <tr>
+            <td>{{ film.title }}</td>
+            <td>{{ film.year }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</div>
