@@ -1,0 +1,29 @@
+.flight-booker {
+  width: 340px;
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
+}
+
+select,
+input,
+button {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+  padding: 8px;
+  font-size: 16px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+
+.success-message {
+  color: green;
+  font-weight: bold;
+}

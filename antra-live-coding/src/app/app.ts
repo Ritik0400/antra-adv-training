@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { JobBoard } from './components/job-board/job-board';
 import { StarWarSearch } from './components/star-war-search/star-war-search';
 import { MortgageCalculator } from './components/mortgage-calculator/mortgage-calculator';
+import { FlightBooker } from './components/flight-booker/flight-booker';
 
 @Component({
   selector: 'app-root',
-  imports: [JobBoard, StarWarSearch,MortgageCalculator],
+  imports: [JobBoard, StarWarSearch,MortgageCalculator,FlightBooker],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

@@ -1,0 +1,30 @@
+<div class="flight-booker">
+  <select [formControl]="flightType">
+    <option value="one-way">One-way flight</option>
+    <option value="return">Return flight</option>
+  </select>
+
+  <input
+    type="date"
+    [formControl]="departureDate"
+  />
+
+  @if (isReturnFlight()) {
+    <input
+      type="date"
+      [formControl]="returnDate"
+    />
+  }
+
+  <button type="button" (click)="bookFlight()">
+    Book
+  </button>
+
+  @if (errorMessage()) {
+    <p class="error-message">{{ errorMessage() }}</p>
+  }
+
+  @if (successMessage()) {
+    <p class="success-message">{{ successMessage() }}</p>
+  }
+</div>
