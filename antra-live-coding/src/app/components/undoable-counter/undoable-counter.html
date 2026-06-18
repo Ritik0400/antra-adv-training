@@ -1,0 +1,80 @@
+<div class="counter-container">
+  <h1>Undoable Counter</h1>
+
+  <div class="undo-redo-controls">
+    <button
+      type="button"
+      (click)="undo()"
+      [disabled]="!canUndo()"
+    >
+      Undo
+    </button>
+
+    <button
+      type="button"
+      (click)="redo()"
+      [disabled]="!canRedo()"
+    >
+      Redo
+    </button>
+  </div>
+
+  <div class="counter-controls">
+    <div class="button-group">
+      <button type="button" (click)="updateCount(-100)">
+        -100
+      </button>
+
+      <button type="button" (click)="updateCount(-10)">
+        -10
+      </button>
+
+      <button type="button" (click)="updateCount(-1)">
+        -1
+      </button>
+    </div>
+
+    <p class="count">
+      {{ count() }}
+    </p>
+
+    <div class="button-group">
+      <button type="button" (click)="updateCount(1)">
+        +1
+      </button>
+
+      <button type="button" (click)="updateCount(10)">
+        +10
+      </button>
+
+      <button type="button" (click)="updateCount(100)">
+        +100
+      </button>
+    </div>
+  </div>
+
+  <section class="history-section">
+    <h2>History</h2>
+
+    @if (history().length === 0) {
+      <p class="empty-history">
+        No actions yet.
+      </p>
+    } @else {
+      <div class="history-list">
+        @for (
+          action of history().slice().reverse();
+          track $index
+        ) {
+          <div class="history-entry">
+            <span>{{ action.label }}</span>
+
+            <span>
+              ({{ action.before }} → {{ action.after }})
+            </span>
+          </div>
+        }
+      </div>
+    }
+  </section>
+</div>

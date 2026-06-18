@@ -1,0 +1,86 @@
+.counter-container {
+  width: min(100% - 32px, 700px);
+  margin: 40px auto;
+  padding: 30px;
+  border: 1px solid #d5d5d5;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.undo-redo-controls {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 35px;
+}
+
+.counter-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  min-width: 65px;
+  padding: 10px 12px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover:not(:disabled) {
+  background-color: #eeeeee;
+}
+
+button:disabled {
+  color: #999999;
+  background-color: #eeeeee;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.count {
+  min-width: 80px;
+  margin: 0;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.history-section {
+  margin-top: 45px;
+}
+
+.history-list {
+  width: min(100%, 320px);
+  max-height: 300px;
+  margin: 0 auto;
+  padding: 15px;
+  overflow-y: auto;
+  border: 1px solid #aaaaaa;
+  text-align: left;
+}
+
+.history-entry {
+  display: flex;
+  gap: 20px;
+  padding: 6px 0;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.empty-history {
+  color: #777777;
+}
