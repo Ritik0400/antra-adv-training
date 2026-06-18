@@ -1,0 +1,151 @@
+<div class="registration-container">
+    <h1>User Registration</h1>
+
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-field">
+            <label for="username">Username</label>
+
+            <input id="username" type="text" formControlName="username" />
+
+            @if (username.pending) {
+            <p class="status-message">
+                Checking username...
+            </p>
+            }
+
+            @if (
+            username.touched &&
+            (
+            username.hasError('required') ||
+            username.hasError('minlength')
+            )
+            ) {
+            <p class="error-message">
+                Username is required and must be at least 3 characters long.
+            </p>
+            }
+
+            @if (
+            username.touched &&
+            username.hasError('usernameTaken')
+            ) {
+            <p class="error-message">
+                Username is already taken.
+            </p>
+            }
+        </div>
+
+        <div class="form-field">
+            <label for="email">
+                Email
+                @if (preferredContactMethod.value === 'email') {
+                <span>*</span>
+                }
+            </label>
+
+            <input id="email" type="email" formControlName="email" />
+
+            @if (
+            email.touched &&
+            email.hasError('required')
+            ) {
+            <p class="error-message">
+                Please provide at least one contact method.
+            </p>
+            }
+
+            @if (
+            email.touched &&
+            email.hasError('email')
+            ) {
+            <p class="error-message">
+                Please enter a valid email address.
+            </p>
+            }
+        </div>
+
+        <div class="form-field">
+            <label for="password">Password</label>
+
+            <input id="password" type="password" formControlName="password" />
+
+            @if (
+            password.touched &&
+            (
+            password.hasError('required') ||
+            password.hasError('minlength')
+            )
+            ) {
+            <p class="error-message">
+                Password is required and must be at least 6 characters long.
+            </p>
+            }
+        </div>
+
+        <div class="form-field">
+            <label for="confirmPassword">
+                Confirm Password
+            </label>
+
+            <input id="confirmPassword" type="password" formControlName="confirmPassword" />
+
+            @if (
+            confirmPassword.touched &&
+            confirmPassword.hasError('required')
+            ) {
+            <p class="error-message">
+                Confirm password is required.
+            </p>
+            }
+
+            @if (
+            confirmPassword.touched &&
+            registrationForm.hasError('passwordMismatch')
+            ) {
+            <p class="error-message">
+                Passwords do not match.
+            </p>
+            }
+        </div>
+
+        <div class="form-field">
+            <label for="preferredContactMethod">
+                Preferred Contact Method
+            </label>
+
+            <select id="preferredContactMethod" formControlName="preferredContactMethod">
+                <option value="email">Email</option>
+                <option value="phone">Phone</option>
+            </select>
+        </div>
+
+        @if (preferredContactMethod.value === 'phone') {
+        <div class="form-field">
+            <label for="phoneNumber">
+                Phone Number *
+            </label>
+
+            <input id="phoneNumber" type="text" formControlName="phoneNumber" />
+
+            @if (
+            phoneNumber.touched &&
+            phoneNumber.hasError('required')
+            ) {
+            <p class="error-message">
+                Please provide at least one contact method.
+            </p>
+            }
+        </div>
+        }
+
+        <button type="submit" [disabled]="registrationForm.invalid || registrationForm.pending">
+            Save
+        </button>
+    </form>
+
+    @if (successMessage()) {
+    <p class="success-message">
+        {{ successMessage() }}
+    </p>
+    }
+</div>

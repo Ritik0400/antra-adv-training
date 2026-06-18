@@ -8,15 +8,21 @@ describe('FlightBooker', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FlightBooker],
+      imports: [FlightBooker]
     }).compileComponents();
 
     fixture = TestBed.createComponent(FlightBooker);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should return true when return flight is selected', () => {
+    component.flightType.setValue('return');
+
+    expect(component.isReturnFlight()).toBeTrue();
   });
 });
