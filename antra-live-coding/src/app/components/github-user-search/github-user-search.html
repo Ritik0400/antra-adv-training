@@ -1,0 +1,33 @@
+<div class="search-container">
+  <h1>GitHub User Search</h1>
+
+  <div class="search-form">
+    <label for="username">Username</label>
+
+    <input
+      id="username"
+      type="text"
+      [formControl]="username"
+      placeholder="Enter GitHub username"
+    />
+
+    <button
+      type="button"
+      (click)="search()"
+    >
+      Search
+    </button>
+  </div>
+
+  @if (username.touched && username.hasError('required')) {
+    <p class="error-message">
+      Username is required.
+    </p>
+  }
+
+  @if (username.touched && username.hasError('pattern')) {
+    <p class="error-message">
+      Username may only contain letters, numbers, and hyphens.
+    </p>
+  }
+</div>

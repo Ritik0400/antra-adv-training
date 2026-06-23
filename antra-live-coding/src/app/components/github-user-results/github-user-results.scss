@@ -1,0 +1,53 @@
+.results-container {
+  width: min(100% - 32px, 900px);
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
+}
+
+.top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.filter-section {
+  margin: 24px 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #777777;
+  text-align: left;
+}
+
+th {
+  background-color: #eeeeee;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+
+a {
+  word-break: break-all;
+}

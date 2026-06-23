@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+
 import { JobBoard } from './components/job-board/job-board';
 import { StarWarSearch } from './components/star-war-search/star-war-search';
 import { MortgageCalculator } from './components/mortgage-calculator/mortgage-calculator';
@@ -8,7 +10,15 @@ import { UndoableCounter } from './components/undoable-counter/undoable-counter'
 
 @Component({
   selector: 'app-root',
-  imports: [JobBoard, StarWarSearch,MortgageCalculator,FlightBooker,UserRegistration,UndoableCounter],
+  imports: [
+    RouterOutlet,
+    JobBoard,
+    StarWarSearch,
+    MortgageCalculator,
+    FlightBooker,
+    UserRegistration,
+    UndoableCounter
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

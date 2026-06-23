@@ -1,0 +1,34 @@
+.search-container {
+  width: min(100% - 32px, 600px);
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
+}
+
+form {
+  display: flex;
+  align-items: end;
+  gap: 12px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  flex: 1;
+  padding: 8px;
+}
+
+button {
+  padding: 8px 18px;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.error-message {
+  color: red;
+}
