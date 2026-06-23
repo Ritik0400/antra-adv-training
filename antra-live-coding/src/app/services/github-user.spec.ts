@@ -1,13 +1,17 @@
+import { provideHttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
-import { GithubUser } from './github-user';
+import { GitHubUserService } from './github-user';
 
-describe('GithubUser', () => {
-  let service: GithubUser;
+describe('GitHubUserService', () => {
+  let service: GitHubUserService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(GithubUser);
+    TestBed.configureTestingModule({
+      providers: [provideHttpClient()]
+    });
+
+    service = TestBed.inject(GitHubUserService);
   });
 
   it('should be created', () => {
